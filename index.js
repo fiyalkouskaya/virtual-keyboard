@@ -34,12 +34,12 @@ wrapperDiv.appendChild(keyboard);
 
 const description = document.createElement('p');
 description.classList.add('description');
-description.textContent = 'Клавиатура создана в операционной системе Windows';
+description.textContent = 'The keyboard was created via WindowsOS';
 wrapperDiv.appendChild(description);
 
 // Create p.language
 
 const language = document.createElement('p');
 language.classList.add('language');
-language.textContent = 'Для переключения языка комбинация: левыe ctrl + alt';
+language.textContent = 'Switch language: left ctrl + alt';
 wrapperDiv.appendChild(language);
