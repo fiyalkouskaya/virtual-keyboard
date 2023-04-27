@@ -47,13 +47,13 @@ wrapperDiv.appendChild(language);
 // Implement the adding rows function
 
 const createButtons = () => {
-    const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in the row
+    const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in a row
     const rows = [];
   
     rowSizes.forEach((rowSize) => {
         const row = document.createElement("div");
         row.classList.add("row");
-        for (let i = 0; i < rowSize; i++) {
+        for (let i = 0; i < rowSize; i++) { // Add buttons to a row
             const button = document.createElement("div");
             button.classList.add("button"); 
             row.appendChild(button);
