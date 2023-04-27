@@ -43,3 +43,32 @@ const language = document.createElement('p');
 language.classList.add('language');
 language.textContent = 'Switch language: left ctrl + alt';
 wrapperDiv.appendChild(language);
+
+// Implement the adding rows function
+
+const createButtons = () => {
+    const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in the row
+    const rows = [];
+  
+    rowSizes.forEach((rowSize) => {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        for (let i = 0; i < rowSize; i++) {
+            const button = document.createElement("div");
+            button.classList.add("button"); 
+            row.appendChild(button);
+          }
+      
+          rows.push(row);
+        });
+      
+        return rows;
+      };
+
+  
+// Add rows to div.keyboard
+
+const rows = createButtons();
+rows.forEach((row) => {
+    keyboard.appendChild(row);
+  });
