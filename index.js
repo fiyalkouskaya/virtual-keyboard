@@ -11,7 +11,7 @@ document.body.appendChild(wrapperDiv);
 
 const title = document.createElement('h1');
 title.classList.add('title');
-title.textContent = 'RSS Virtual Keyboard';
+title.textContent = 'RSS VIRTUAL KEYBOARD';
 wrapperDiv.appendChild(title);
 
 // Create textarea.textarea 
@@ -34,14 +34,14 @@ wrapperDiv.appendChild(keyboard);
 
 const description = document.createElement('p');
 description.classList.add('description');
-description.textContent = 'The keyboard was created via WindowsOS';
+description.textContent = 'THE KEYBOARD WAS CREATED VIA WINDOWS OS';
 wrapperDiv.appendChild(description);
 
 // Create p.language
 
 const language = document.createElement('p');
 language.classList.add('language');
-language.textContent = 'Switch language: left ctrl + alt';
+language.textContent = 'SWITCH LANGUAGE: LEFT CTRL + ALT';
 wrapperDiv.appendChild(language);
 
 // Implement the adding rows function
