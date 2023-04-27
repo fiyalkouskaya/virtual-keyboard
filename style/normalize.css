@@ -39,7 +39,11 @@ main {
 
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
+  margin: 15px 0;
+}
+
+p {
+  margin: 5px 0;
 }
 
 /* Grouping content
