@@ -47,7 +47,7 @@ wrapperDiv.appendChild(language);
 // Implement the adding rows function
 
 const createKeys = (rowClasses) => {
-    const rowSizes = [14, 15, 13, 13, 9]; // Defines the number of elements in a row
+    const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in a row
     const rows = [];
   
     rowSizes.forEach((rowSize, index) => {
@@ -76,7 +76,7 @@ const rowClasses = [
     ["backQuote", "digit1", "digit2", "digit3", "digit4", "digit5", "digit6", "digit7", "digit8", "digit9", "digit0", "minus", "equal", "backspace"],
     ["tab", "keyQ", "keyW", "keyE", "keyR", "keyT", "keyY", "keyU", "keyI", "keyO", "keyP", "bracketLeft", "bracketRight", "backslash", "delete"],
     ["capsLock", "keyA", "keyS", "keyD", "keyF", "keyG", "keyH", "keyJ", "keyK", "keyL", "semicolon", "quote", "enter"],
-    ["shiftLeft", "keyZ", "keyX", "keyC", "keyV", "keyB", "keyN", "keyM", "comma", "period", "slash", "arrowUp", "shiftRight"],
+    ["shiftLeft", "backslash", "keyZ", "keyX", "keyC", "keyV", "keyB", "keyN", "keyM", "comma", "period", "slash", "arrowUp", "shiftRight"],
     ["ctrlLeft", "win", "altLeft", "space", "altRight", "ctrlRight", "arrowLeft", "arrowDown", "arrowRight"]
   ]; 
 
