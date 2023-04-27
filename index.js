@@ -46,17 +46,22 @@ wrapperDiv.appendChild(language);
 
 // Implement the adding rows function
 
-const createButtons = () => {
-    const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in a row
+const createKeys = (rowClasses) => {
+    const rowSizes = [14, 15, 13, 13, 9]; // Defines the number of elements in a row
     const rows = [];
   
-    rowSizes.forEach((rowSize) => {
+    rowSizes.forEach((rowSize, index) => {
         const row = document.createElement("div");
         row.classList.add("row");
         for (let i = 0; i < rowSize; i++) { // Add buttons to a row
-            const button = document.createElement("div");
-            button.classList.add("button"); 
-            row.appendChild(button);
+            const key = document.createElement("div");
+            key.classList.add("key"); 
+            
+            if (rowClasses[index]) {
+               key.classList.add(rowClasses[index][i]); // Add the class from the array to the div.button
+            }
+
+            row.appendChild(key);
           }
       
           rows.push(row);
@@ -65,10 +70,19 @@ const createButtons = () => {
         return rows;
       };
 
-  
+// Defines an array of classes for each row
+
+const rowClasses = [
+    ["backQuote", "digit1", "digit2", "digit3", "digit4", "digit5", "digit6", "digit7", "digit8", "digit9", "digit0", "minus", "equal", "backspace"],
+    ["tab", "keyQ", "keyW", "keyE", "keyR", "keyT", "keyY", "keyU", "keyI", "keyO", "keyP", "bracketLeft", "bracketRight", "backslash", "delete"],
+    ["capsLock", "keyA", "keyS", "keyD", "keyF", "keyG", "keyH", "keyJ", "keyK", "keyL", "semicolon", "quote", "enter"],
+    ["shiftLeft", "keyZ", "keyX", "keyC", "keyV", "keyB", "keyN", "keyM", "comma", "period", "slash", "arrowUp", "shiftRight"],
+    ["ctrlLeft", "win", "altLeft", "space", "altRight", "ctrlRight", "arrowLeft", "arrowDown", "arrowRight"]
+  ]; 
+
 // Add rows to div.keyboard
 
-const rows = createButtons();
+const rows = createKeys(rowClasses);
 rows.forEach((row) => {
     keyboard.appendChild(row);
   });
