@@ -49,6 +49,13 @@ wrapperDiv.appendChild(language);
 const createKeys = (rowClasses) => {
     const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in a row
     const rows = [];
+    const textValues = [
+    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
+    ["TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "DEL"],
+    ["CAPS", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "ENTER"],
+    ["SHIFT", "\\", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "↑", "SHFT"],
+    ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
+  ];
   
     rowSizes.forEach((rowSize, index) => {
         const row = document.createElement("div");
@@ -59,6 +66,11 @@ const createKeys = (rowClasses) => {
             
             if (rowClasses[index]) {
                key.classList.add(rowClasses[index][i]); // Add the class from the array to the div.button
+               
+               const classIndex = rowClasses[index].indexOf(key.classList[1]);
+               if (classIndex >= 0) {
+                 key.textContent = textValues[index][classIndex];
+               }
             }
 
             row.appendChild(key);
