@@ -98,3 +98,18 @@ const rows = createKeys(rowClasses);
 rows.forEach((row) => {
     keyboard.appendChild(row);
   });
+
+let key = document.querySelectorAll('.key');
+let space = document.querySelector('.space');
+let tab = document.querySelector('.tab');
+let backspace = document.querySelector('.backspace');
+let del = document.querySelector('.delete');
+let enter = document.querySelector('.enter');
+let caps = document.querySelector('.capsLock');
+let shiftL= document.querySelectorAll('.shiftLeft');
+let shiftR = document.querySelector('.shiftRight');
+let ctrlL= document.querySelectorAll('.ctrlLeft');
+let ctrlR = document.querySelector('.ctrlRight');
+let win = document.querySelector('.win');
+let altL= document.querySelectorAll('.altLeft');
+let altR = document.querySelector('.altRight');
