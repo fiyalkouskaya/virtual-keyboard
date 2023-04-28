@@ -99,17 +99,31 @@ rows.forEach((row) => {
     keyboard.appendChild(row);
   });
 
-let key = document.querySelectorAll('.key');
-let space = document.querySelector('.space');
-let tab = document.querySelector('.tab');
-let backspace = document.querySelector('.backspace');
-let del = document.querySelector('.delete');
-let enter = document.querySelector('.enter');
-let caps = document.querySelector('.capsLock');
-let shiftL= document.querySelectorAll('.shiftLeft');
-let shiftR = document.querySelector('.shiftRight');
-let ctrlL= document.querySelectorAll('.ctrlLeft');
-let ctrlR = document.querySelector('.ctrlRight');
-let win = document.querySelector('.win');
-let altL= document.querySelectorAll('.altLeft');
-let altR = document.querySelector('.altRight');
+  const keys = document.querySelectorAll('.key');
+
+// Function to highlight a pressed key
+
+const highlightKey = (event) => {
+  const key = event.key.toLowerCase();
+  keys.forEach((virtualKey) => {
+    if (virtualKey.textContent.toLowerCase() === key) {
+      virtualKey.classList.add('active');
+    }
+  });
+};
+
+// Function to remove highlight from a released key
+
+const removeHighlight = (event) => {
+  const key = event.key.toLowerCase();
+  keys.forEach((virtualKey) => {
+    if (virtualKey.textContent.toLowerCase() === key) {
+      virtualKey.classList.remove('active');
+    }
+  });
+};
+
+// Add event listeners to document for keydown and keyup events
+
+document.addEventListener('keydown', highlightKey);
+document.addEventListener('keyup', removeHighlight);
