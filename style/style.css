@@ -91,7 +91,9 @@ h1 {
 }
 
 .key {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 36px;
     height: 34px;
@@ -106,6 +108,10 @@ h1 {
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
+}
+
+.shiftRight {
+    width: 45px;
 }
 
 .tab {
