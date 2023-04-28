@@ -110,6 +110,11 @@ h1 {
     line-height: 25px;
 }
 
+.key.active {
+    border-bottom-width: 2px;
+    height: 36px;
+}
+
 .shiftRight {
     width: 45px;
 }
