@@ -109,10 +109,16 @@ h1 {
     font-weight: 600;
     font-size: 20px;
     line-height: 25px;
+
+    cursor: pointer;
 }
 
 .key.active {
     border-bottom-width: 2px;
+    background-color: #E8E8E8;
+}
+
+.key:hover {
     background-color: #E8E8E8;
 }
 
