@@ -99,25 +99,52 @@ rows.forEach((row) => {
     keyboard.appendChild(row);
   });
 
-  const keys = document.querySelectorAll('.key');
+const keys = document.querySelectorAll('.key');
 
 // Function to highlight a pressed key
 
 const highlightKey = (event) => {
   const key = event.key.toLowerCase();
   keys.forEach((virtualKey) => {
-    if (virtualKey.textContent.toLowerCase() === key) {
+    if (virtualKey.textContent.toLowerCase() === key || 
+        key === 'delete' && virtualKey.textContent === 'DEL' ||
+        key === 'backspace' && virtualKey.textContent === 'BCKSPC' ||
+        key === 'capslock' && virtualKey.textContent === 'CAPS' ||
+        key === 'shift' && (event.code === 'ShiftLeft' && event.location === 1 && virtualKey.classList.contains('shiftLeft')) ||
+        key === 'shift' && (event.code === 'ShiftRight' && event.location === 2 && virtualKey.classList.contains('shiftRight')) ||
+        event.metaKey && virtualKey.textContent === 'WIN' ||
+        key === 'control' && (event.location === 1 && virtualKey.classList.contains("ctrlLeft") ||
+                              event.location === 2 && virtualKey.classList.contains("ctrlRight")) ||
+        key === 'arrowup' && virtualKey.textContent === '↑' ||
+        key === 'arrowright' && virtualKey.textContent === '→'||
+        key === 'arrowdown' && virtualKey.textContent === '↓'||
+        key === 'arrowleft' && virtualKey.textContent === '←'
+        ) {
       virtualKey.classList.add('active');
     }
   });
 };
+
 
 // Function to remove highlight from a released key
 
 const removeHighlight = (event) => {
   const key = event.key.toLowerCase();
   keys.forEach((virtualKey) => {
-    if (virtualKey.textContent.toLowerCase() === key) {
+    if (virtualKey.textContent.toLowerCase() === key || 
+      key === 'delete' && virtualKey.textContent === 'DEL' ||
+      key === 'backspace' && virtualKey.textContent === 'BCKSPC' ||
+      key === 'capslock' && virtualKey.textContent === 'CAPS' ||
+      key === 'shift' && (event.code === 'ShiftLeft' && event.location === 1 && virtualKey.classList.contains('shiftLeft')) ||
+      key === 'shift' && (event.code === 'ShiftRight' && event.location === 2 && virtualKey.classList.contains('shiftRight')) ||
+      event.metaKey && virtualKey.textContent === 'WIN' ||
+      key === 'control' && (event.location === 1 && virtualKey.classList.contains("ctrlLeft") ||
+                            event.location === 2 && virtualKey.classList.contains("ctrlRight")) ||
+      key === 'arrowup' && virtualKey.textContent === '↑' ||
+      key === 'arrowright' && virtualKey.textContent === '→'||
+      key === 'arrowdown' && virtualKey.textContent === '↓'||
+      key === 'arrowleft' && virtualKey.textContent === '←'
+      ) {
       virtualKey.classList.remove('active');
     }
   });
