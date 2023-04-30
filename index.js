@@ -44,25 +44,48 @@ language.classList.add('language');
 language.textContent = 'SWITCH LANGUAGE: LEFT CTRL + ALT';
 wrapperDiv.appendChild(language);
 
-// Implement the adding rows function
+// Defines an array of symbols for each row in eng and polish
+
+const englishTextValues = [
+  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
+  ["TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "DEL"],
+  ["CAPS", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "ENTER"],
+  ["SHIFT", "\\", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "↑", "SHFT"],
+  ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
+];
+
+const polishTextValues = [
+  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
+  ["TAB", "Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "[", "]", "\\", "DEL"],
+  ["CAPS", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "ENTER"],
+  ["SHIFT", "\\", "Y", "X", "C", "V", "B", "N", "M", ",", ".", "/", "↑", "SHFT"],
+  ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
+];
+
+// Defines an array of classes for each row
+
+const rowClasses = [
+  ["backQuote", "digit1", "digit2", "digit3", "digit4", "digit5", "digit6", "digit7", "digit8", "digit9", "digit0", "minus", "equal", "backspace"],
+  ["tab", "keyQ", "keyW", "keyE", "keyR", "keyT", "keyY", "keyU", "keyI", "keyO", "keyP", "bracketLeft", "bracketRight", "backslash", "delete"],
+  ["capsLock", "keyA", "keyS", "keyD", "keyF", "keyG", "keyH", "keyJ", "keyK", "keyL", "semicolon", "quote", "enter"],
+  ["shiftLeft", "backslash", "keyZ", "keyX", "keyC", "keyV", "keyB", "keyN", "keyM", "comma", "period", "slash", "arrowUp", "shiftRight"],
+  ["ctrlLeft", "win", "altLeft", "space", "altRight", "ctrlRight", "arrowLeft", "arrowDown", "arrowRight"]
+]; 
+
+  // Implement the adding rows function
 
 const createKeys = (rowClasses) => {
     const rowSizes = [14, 15, 13, 14, 9]; // Defines the number of elements in a row
     const rows = [];
-    const textValues = [
-    ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
-    ["TAB", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "DEL"],
-    ["CAPS", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "ENTER"],
-    ["SHIFT", "\\", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "↑", "SHFT"],
-    ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
-  ];
+    let currentLanguage = localStorage.getItem("language") || "english";
+    const textValues = currentLanguage === 'english' ? englishTextValues : polishTextValues;
   
     rowSizes.forEach((rowSize, index) => {
-        const row = document.createElement("div");
-        row.classList.add("row");
+        const row = document.createElement('div');
+        row.classList.add('row');
         for (let i = 0; i < rowSize; i++) { // Add buttons to a row
-            const key = document.createElement("div");
-            key.classList.add("key"); 
+            const key = document.createElement('div');
+            key.classList.add('key'); 
             
             if (rowClasses[index]) {
                key.classList.add(rowClasses[index][i]); // Add the class from the array to the div.button
@@ -82,16 +105,6 @@ const createKeys = (rowClasses) => {
         return rows;
       };
 
-// Defines an array of classes for each row
-
-const rowClasses = [
-    ["backQuote", "digit1", "digit2", "digit3", "digit4", "digit5", "digit6", "digit7", "digit8", "digit9", "digit0", "minus", "equal", "backspace"],
-    ["tab", "keyQ", "keyW", "keyE", "keyR", "keyT", "keyY", "keyU", "keyI", "keyO", "keyP", "bracketLeft", "bracketRight", "backslash", "delete"],
-    ["capsLock", "keyA", "keyS", "keyD", "keyF", "keyG", "keyH", "keyJ", "keyK", "keyL", "semicolon", "quote", "enter"],
-    ["shiftLeft", "backslash", "keyZ", "keyX", "keyC", "keyV", "keyB", "keyN", "keyM", "comma", "period", "slash", "arrowUp", "shiftRight"],
-    ["ctrlLeft", "win", "altLeft", "space", "altRight", "ctrlRight", "arrowLeft", "arrowDown", "arrowRight"]
-  ]; 
-
 // Add rows to div.keyboard
 
 const rows = createKeys(rowClasses);
@@ -100,6 +113,27 @@ rows.forEach((row) => {
   });
 
 const keys = document.querySelectorAll('.key');
+
+// Keyboard layout toggle function
+const toggleLanguage = () => {
+  const currentLanguage = localStorage.getItem('language') || 'english';
+  const newLanguage = currentLanguage === 'english' ? 'polish' : 'english';
+  localStorage.setItem('language', newLanguage);
+  window.location.reload(); // Reload the page to apply the new language
+};
+
+// Add event listeners to document for keydown ctrlleft and altleft
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'ControlLeft') {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'AltLeft') {
+        toggleLanguage();
+      }
+    });
+  }
+});
+
 
 // Function to highlight a pressed key
 
