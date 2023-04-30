@@ -114,6 +114,7 @@ h1 {
 }
 
 .key.active {
+    height: 36px;
     border-bottom-width: 2px;
     background-color: #E8E8E8;
 }
