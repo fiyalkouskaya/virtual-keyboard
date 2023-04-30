@@ -41,7 +41,7 @@ wrapperDiv.appendChild(description);
 
 const language = document.createElement('p');
 language.classList.add('language');
-language.textContent = 'SWITCH LANGUAGE: LEFT CTRL + ALT';
+language.textContent = 'SWITCH LANGUAGE: LEFT CTRL +  LEFT ALT';
 wrapperDiv.appendChild(language);
 
 // Defines an array of symbols for each row in eng and polish
