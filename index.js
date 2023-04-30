@@ -188,3 +188,19 @@ const removeHighlight = (event) => {
 
 document.addEventListener('keydown', highlightKey);
 document.addEventListener('keyup', removeHighlight);
+
+// Implement clicks on the buttons with a mouse clicks
+
+keys.forEach((key) => {
+  key.addEventListener('click', () => {
+    const keyText = key.textContent;
+    insertText(keyText);
+  });
+});
+
+// Function to insert text into the text area
+
+const insertText = (text) => {
+  const textarea = document.querySelector('#textarea');
+  textarea.value += text;
+};
