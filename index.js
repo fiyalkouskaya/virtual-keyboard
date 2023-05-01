@@ -135,10 +135,10 @@ document.addEventListener('keydown', (event) => {
 });
 
 
-// Function to highlight a pressed/clicked key
+// Function to highlight a pressed key
 
 const highlightKey = (event) => {
-  const key = event.type === 'click' ? event.target.textContent.toLowerCase() : event.key.toLowerCase();
+  const key = event.key.toLowerCase();
   keys.forEach((virtualKey) => {
     if (virtualKey.textContent.toLowerCase() === key || 
         key === 'delete' && virtualKey.textContent === 'DEL' ||
@@ -188,10 +188,6 @@ const removeHighlight = (event) => {
 
 document.addEventListener('keydown', highlightKey);
 document.addEventListener('keyup', removeHighlight);
-keys.forEach((virtualKey) => {
-  virtualKey.addEventListener('click', highlightKey);
-  virtualKey.addEventListener('mouseup', removeHighlight);
-});
 
 // Implement clicks on the buttons with a mouse clicks
 
@@ -203,6 +199,8 @@ keys.forEach((key) => {
       deleteNextCharacter();
     } else if (key.classList.contains('enter')) {
       moveCursorToNextLine();
+    } else if (key.classList.contains('tab')) {
+      addSpacesToLine();
     } else {
     const keyText = key.textContent;
     insertText(keyText);
@@ -230,6 +228,15 @@ function moveCursorToNextLine() {
   const cursorPosition = textArea.selectionStart;
   const currentValue = textArea.value;
   const newValue = currentValue + '\n';
+  textArea.value = newValue;
+} 
+
+function addSpacesToLine() {
+  const textArea = document.querySelector('textarea');
+  const start = textArea.selectionStart;
+  const end = textArea.selectionEnd;
+  const currentValue = textArea.value;
+  const newValue = currentValue.slice(0, start) + "    " + currentValue.slice(end);
   textArea.value = newValue;
 } 
 
