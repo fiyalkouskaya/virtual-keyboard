@@ -135,10 +135,10 @@ document.addEventListener('keydown', (event) => {
 });
 
 
-// Function to highlight a pressed key
+// Function to highlight a pressed/clicked key
 
 const highlightKey = (event) => {
-  const key = event.key.toLowerCase();
+  const key = event.type === 'click' ? event.target.textContent.toLowerCase() : event.key.toLowerCase();
   keys.forEach((virtualKey) => {
     if (virtualKey.textContent.toLowerCase() === key || 
         key === 'delete' && virtualKey.textContent === 'DEL' ||
@@ -184,10 +184,14 @@ const removeHighlight = (event) => {
   });
 };
 
-// Add event listeners to document for keydown and keyup events
+// Add event listeners to document for keydown and keyup events and clicks
 
 document.addEventListener('keydown', highlightKey);
 document.addEventListener('keyup', removeHighlight);
+keys.forEach((virtualKey) => {
+  virtualKey.addEventListener('click', highlightKey);
+  virtualKey.addEventListener('mouseup', removeHighlight);
+});
 
 // Implement clicks on the buttons with a mouse clicks
 
