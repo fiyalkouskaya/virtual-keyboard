@@ -201,6 +201,8 @@ keys.forEach((key) => {
       deleteLastCharacter();
     } else if (key.classList.contains('delete')) {
       deleteNextCharacter();
+    } else if (key.classList.contains('enter')) {
+      moveCursorToNextLine();
     } else {
     const keyText = key.textContent;
     insertText(keyText);
@@ -222,6 +224,14 @@ function deleteNextCharacter() {
   const newValue = currentValue.substring(0, cursorPosition) + currentValue.substring(cursorPosition + 1);
   textArea.value = newValue;
 }
+
+function moveCursorToNextLine() {
+  const textArea = document.querySelector('textarea');
+  const cursorPosition = textArea.selectionStart;
+  const currentValue = textArea.value;
+  const newValue = currentValue + '\n';
+  textArea.value = newValue;
+} 
 
 // Function to insert text into the text area
 
