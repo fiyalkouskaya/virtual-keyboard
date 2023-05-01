@@ -1,0 +1,155 @@
+/* dosis-600 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 600;
+    src: url('../fonts/dosis-v27-latin-600.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/dosis-v27-latin-600.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/dosis-v27-latin-600.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/dosis-v27-latin-600.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/dosis-v27-latin-600.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/dosis-v27-latin-600.svg#Dosis') format('svg'); /* Legacy iOS */
+  }
+
+/* dosis-700 - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 700;
+    src: url('../fonts/dosis-v27-latin-700.eot'); /* IE9 Compat Modes */
+    src: url('../fonts/dosis-v27-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('../fonts/dosis-v27-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+         url('../fonts/dosis-v27-latin-700.woff') format('woff'), /* Modern Browsers */
+         url('../fonts/dosis-v27-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('../fonts/dosis-v27-latin-700.svg#Dosis') format('svg'); /* Legacy iOS */
+  }
+
+.body {
+    background-color: #F3F3F3;
+    font-family: 'Dosis';
+    font-style: normal;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 38px;
+    color: #CD5E77;
+    margin: 0px;
+}
+
+.textarea {
+    display: block;
+    width: 670px;
+    margin: 15px;
+    min-height: 200px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    background-color:  #F3F3F3;;
+    border: 2px solid #CD5E77;
+    border-radius: 4px;
+
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #2A2A2A;
+}
+
+::-webkit-resizer {
+    width: 14px;
+    height: 14px;
+    background-color: #CD5E77;
+    border-radius: 4px;
+    box-shadow: 0 0 0 4px #F5F5F5;
+}
+
+.keyboard {
+    width: 700px;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: #EE959E;
+    box-sizing: border-box;
+    border-bottom: 4px solid #be777e;
+    border-radius: 6px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    width: 670px;
+}
+
+.key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 36px;
+    height: 34px;
+    border: 2px solid #2A2A2A;
+    border-bottom-width: 4px;
+    border-radius: 2px;
+    background-color:  #F3F3F3;
+    margin: 2px 1px;
+
+    font-family: 'Dosis';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 25px;
+
+    cursor: pointer;
+}
+
+.key.active {
+    height: 36px;
+    border-bottom-width: 2px;
+    background-color: #E8E8E8;
+}
+
+.key:hover {
+    background-color: #E8E8E8;
+}
+
+.shiftRight {
+    width: 45px;
+}
+
+.tab {
+    width: 46px;
+}
+
+.delete {
+    width: 40px;
+}
+
+.backspace,
+.shiftLeft {
+    width: 96px;
+}
+
+.enter {
+    width: 119px;
+}
+
+.capsLock,
+.ctrlLeft,
+.ctrlRight {
+    width: 59px;
+}
+
+.space {
+    width: 280px;
+}
