@@ -54,11 +54,27 @@ const englishTextValues = [
   ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
 ];
 
+const englishTextValuesLower = [
+  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
+  ["TAB", "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\", "DEL"],
+  ["CAPS", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "ENTER"],
+  ["SHIFT", "\\", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "↑", "SHFT"],
+  ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
+];
+
 const polishTextValues = [
   ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
   ["TAB", "Q", "W", "E", "R", "T", "Z", "U", "I", "O", "P", "[", "]", "\\", "DEL"],
   ["CAPS", "A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "ENTER"],
   ["SHIFT", "\\", "Y", "X", "C", "V", "B", "N", "M", ",", ".", "/", "↑", "SHFT"],
+  ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
+];
+
+const polishTextValuesLower = [
+  ["`", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "-", "=", "BCKSPC"],
+  ["TAB", "q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "[", "]", "\\", "DEL"],
+  ["CAPS", "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'", "ENTER"],
+  ["SHIFT", "\\", "y", "x", "c", "v", "b", "n", "m", ",", ".", "/", "↑", "SHFT"],
   ["CTRL", "WIN", "ALT", " ", "ALT", "CTRL", "←", "↓", "→"]
 ];
 
@@ -193,6 +209,8 @@ document.addEventListener('keyup', removeHighlight);
 
 keys.forEach((key) => {
   key.addEventListener('click', () => {
+    const keyText = key.textContent;
+
     if (key.classList.contains('backspace')) {
       deleteLastCharacter();
     } else if (key.classList.contains('delete')) {
@@ -201,8 +219,21 @@ keys.forEach((key) => {
       moveCursorToNextLine();
     } else if (key.classList.contains('tab')) {
       addSpacesToLine();
+    } else if (key.classList.contains('capsLock')) {
+      keyText = '';
+    } else if (key.classList.contains('shiftLeft') || key.classList.contains('shiftRight')) {
+      keyText = '';
+    }  else if (key.classList.contains('altLeft') || key.classList.contains('altRight')) {
+      keyText = '';
+    } else if (key.classList.contains('ctrlLeft') || key.classList.contains('ctrlRight')) {
+      keyText = '';
+    } else if (key.classList.contains('win') || 
+    key.classList.contains('arrowLeft')||
+    key.classList.contains('arrowDown') ||
+    key.classList.contains('arrowRight') ||
+    key.classList.contains('arrowUp')) {
+    keyText = '';
     } else {
-    const keyText = key.textContent;
     insertText(keyText);
     }
   });
