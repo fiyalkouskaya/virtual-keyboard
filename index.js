@@ -193,10 +193,31 @@ document.addEventListener('keyup', removeHighlight);
 
 keys.forEach((key) => {
   key.addEventListener('click', () => {
+    if (key.classList.contains('backspace')) {
+      deleteLastCharacter();
+    } else if (key.classList.contains('delete')) {
+      deleteNextCharacter();
+    } else {
     const keyText = key.textContent;
     insertText(keyText);
+    }
   });
 });
+
+function deleteLastCharacter() {
+  const textArea = document.querySelector('textarea');
+  const currentValue = textArea.value;
+  const newValue = currentValue.slice(0, -1);
+  textArea.value = newValue;
+}
+
+function deleteNextCharacter() {
+  const textArea = document.querySelector('textarea');
+  const cursorPosition = textArea.selectionStart;
+  const currentValue = textArea.value;
+  const newValue = currentValue.substring(0, cursorPosition) + currentValue.substring(cursorPosition + 1);
+  textArea.value = newValue;
+}
 
 // Function to insert text into the text area
 
@@ -204,3 +225,4 @@ const insertText = (text) => {
   const textarea = document.querySelector('#textarea');
   textarea.value += text;
 };
+
